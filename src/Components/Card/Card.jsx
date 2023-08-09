@@ -4,15 +4,17 @@ import './Card.css'
 
 function Card(props) {
 
-  function playMove() {
-    onPlay();
-  }
-
+  let icon = <Icon/>
+  if (props.player === 'X') {
+    icon = <Icon name="cross"/>
+  } else if (props.player === '0') {
+    icon = <Icon name = 'circle'/>
+  } 
   return (
-    <div className='card' onClick={playMove} >
-      <Icon name= {props.iconName}/>
+    <div className='card' onClick={() => props.onPlay(props.index)} >
+      {icon}
     </div>
   )
 }
 
-export default Card
+export default Card;

@@ -5,18 +5,20 @@ import { FaLastfm } from 'react-icons/fa'
 
 function Grid(props) {
     const [turn, setTurn] = useState(true)
-    const [board, setBoard] = useState(Array(numbersOfCards).fill(''))
+    const [board, setBoard] = useState(Array(props.numbersOfCards).fill(''))
 
-    function play() {
-        console.log("clicked");
+    function play(index) {
+        console.log("clicked", index);
         setTurn(!turn)
     }
 
     return (
         <>
-            <h1 className='turn-highlight'>Current Turn: {(turn) ? '0': 'X'}</h1>
+            <h1 className='turn-highlight'>Current Turn: {(turn) ? '0' : 'X'}</h1>
             <div className='grid'>
-                {Array(props.numbersOfCards).fill(<Card  />).map((el, index) => <Card onPlay={play} key={index} iconName=""  />)}
+               {board.map((value, index) => {
+                   return <Card onPlay={play} key={index} index={index} player={value} iconName="" />
+                })}
             </div>
         </>
     )
