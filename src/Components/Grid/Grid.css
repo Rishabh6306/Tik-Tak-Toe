@@ -7,6 +7,19 @@
     width: 500px;
 }
 
+.grid-wrapper {
+max-width: 600px;
+}
+
 .turn-highlight {
     color: white;
+}
+
+.reset {
+    background-color: green;
+    padding: 1rem;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
 }
