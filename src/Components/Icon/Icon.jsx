@@ -1,5 +1,4 @@
-// Icon.js
-import React from 'react';
+import React, { memo }from 'react';
 import { FaTimes, FaPen, FaRegCircle } from 'react-icons/fa';
 
 function Icon(props) {
@@ -10,4 +9,4 @@ function Icon(props) {
   );
 }
 
-export default Icon;
+export default memo(Icon);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Icon from '../Icon/Icon'
 import './Card.css'
 
@@ -17,4 +17,4 @@ function Card(props) {
   )
 }
 
-export default Card;
+export default memo(Card);

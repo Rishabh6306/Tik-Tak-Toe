@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import Card from '../Card/Card'
 import './Grid.css'
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,51 +22,64 @@ function isWinner(board, symbol) {
 }
 
 function Grid(props) {
-    const [turn, setTurn] = useState(true)
-    const [board, setBoard] = useState(Array(props.numbersOfCards).fill(''))
-    const [winnner, setWinner] = useState('')
+    const [turn, setTurn] = useState(true);
+    const [board, setBoard] = useState(Array(props.numbersOfCards).fill(''));
+    const [winner, setWinner] = useState('');
 
-    function play(index) {
-        console.log("clicked", index);
-        if (turn === true) {
-            board[index] = '0'
-        } else {
-            board[index] = 'X'
-        }
+    const play = useCallback(
+        function playCallback(index) {
+            if (board[index] === '' && winner === '') {
+                const newBoard = [...board];
+                newBoard[index] = turn ? '0' : 'X';
 
-        const win = isWinner(board, turn ? '0' : 'X');
-        if (win) {
-            setWinner(win)
-            toast(`Congratulation ${win} is win the game.`)
-        }
-        setTurn([...board])
-        setTurn(!turn)
+                setBoard(newBoard);
 
+                const win = isWinner(newBoard, newBoard[index]);
+                if (win) {
+                    setWinner(win);
+                    toast(`Congratulations ${win} has won the game.`);
+                } else if (!newBoard.includes('')) {
+                    setWinner('Tie'); // Game over in a tie
+                    toast('Game Over: It\'s a tie.');
+                }
+
+                setTurn(!turn);
+            }
+        },
+        [board, turn, winner]
+    );
+
+    function reset() {
+        setBoard(Array(props.numbersOfCards).fill(''));
+        setWinner('');
     }
-
-       function reset() {
-           setBoard(Array(props.numbersOfCards).fill())
-           setWinner(null)
-       }
 
     return (
         <div className='grid-wrapper'>
-            {winnner && (
-                <>
-                    <h1 className='turn-highlight'>Winner is {winnner} </h1>
-                    <button className='reset' onClick={reset}>Reset Game</button>
-                    <ToastContainer position='top-center' />
-                </>
-            )}
-
-            <h1 className='turn-highlight'>Current Turn: {(turn) ? '0' : 'X'}</h1>
+            <h1 className='turn-highlight'>{winner ? (winner === 'Tie' ? 'Game Over' : 'Winner is ' + winner) : 'Current Turn: ' + (turn ? '0' : 'X')}</h1>
             <div className='grid'>
                 {board.map((value, index) => {
-                    return <Card gameEnd={winnner?true:false} onPlay={play} key={index} index={index} player={value} iconName="" />
+                    return (
+                        <Card
+                            gameEnd={winner ? true : false}
+                            onPlay={play}
+                            key={index}
+                            index={index}
+                            player={value}
+                            iconName=''
+                        />
+                    );
                 })}
             </div>
+            {winner && (
+                <div className='result-message'>
+                    <button className='reset' onClick={reset}>Reset Game</button>
+                    {winner === 'Tie' ? 'It\'s a tie.' : `Congratulations ${winner} has won the game.`}
+                </div>
+            )}
+            <ToastContainer position='top-center' />
         </div>
-    )
+    );
 }
 
 export default Grid;
