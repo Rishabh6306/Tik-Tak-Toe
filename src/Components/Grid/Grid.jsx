@@ -62,7 +62,7 @@ function Grid(props) {
             <h1 className='turn-highlight'>Current Turn: {(turn) ? '0' : 'X'}</h1>
             <div className='grid'>
                 {board.map((value, index) => {
-                    return <Card onPlay={play} key={index} index={index} player={value} iconName="" />
+                    return <Card gameEnd={winnner?true:false} onPlay={play} key={index} index={index} player={value} iconName="" />
                 })}
             </div>
         </div>

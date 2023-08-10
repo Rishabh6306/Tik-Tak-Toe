@@ -11,7 +11,7 @@ function Card(props) {
     icon = <Icon name = 'circle'/>
   } 
   return (
-    <div className='card' onClick={() => props.onPlay(props.index)} >
+    <div className='card' onClick={() => !props.gameEnd && props.player === '' && props.onPlay(props.index)} >
       {icon}
     </div>
   )
