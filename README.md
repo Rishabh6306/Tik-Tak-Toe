@@ -58,7 +58,7 @@ tic-tac-toe-game/
 
 Here are a screenshot of Game:
 
-![Screenshot 1](./tik%20tak%20toe%20game.png)
+![Screenshot 1](./Screenshot-1.png)
 
 ### Acknowledgments
 This project was created using React, a JavaScript library for building user interfaces. It showcases the use of components, state management, and user interactions.
