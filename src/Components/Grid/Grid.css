@@ -3,12 +3,18 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
 }
 
 .grid-wrapper {
-max-width: 500px;
+/* max-width: 500px; */
+width: 100vw;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
 }
 
 .turn-highlight {
@@ -22,4 +28,11 @@ max-width: 500px;
     border: none;
     border-radius: 10px;
     width: 100%;
+}
+
+@media screen and (max-width: 410px) {
+    .grid {
+        height: 370px;
+        width: 380px;
+    }
 }

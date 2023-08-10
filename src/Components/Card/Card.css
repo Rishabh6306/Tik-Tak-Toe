@@ -3,9 +3,16 @@
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    height: 140px;
-    width: 140px;
+    height: 120px;
+    width: 120px;
     background-color: yellow;
     border-radius: 14px;
     flex-basis: 30%;
+}
+
+@media screen and (max-width: 370px) {
+    .card {
+        height: 100px;
+        width: 100px;
+    }
 }
