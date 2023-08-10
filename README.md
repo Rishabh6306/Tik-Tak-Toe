@@ -28,6 +28,7 @@ This project is a simple implementation of the classic Tic Tac Toe game using Re
 2. The first player to get three of their symbols in a row (horizontal, vertical, or diagonal) wins the game.
 3. If no player achieves three symbols in a row and all squares are occupied, the game ends in a tie.
 
+
 ### Folder Structure
 The project follows the following folder structure:
 tic-tac-toe-game/
@@ -53,12 +54,6 @@ tic-tac-toe-game/
 ├── README.md
 └── ...
 
-
-## Screenshots
-
-Here are a screenshot of Game:
-
-![Screenshot 1](./Screenshot-1.png)
 
 ### Acknowledgments
 This project was created using React, a JavaScript library for building user interfaces. It showcases the use of components, state management, and user interactions.
