@@ -56,7 +56,7 @@ tic-tac-toe-game/
 
 ## Screenshots
 
-Here are a few screenshots of CountryInfo Web App:
+Here are a screenshot of Game:
 
 ![Screenshot 1](./public/tik%20tak%20toe%20game.png)
 
